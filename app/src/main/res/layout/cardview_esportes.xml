@@ -13,7 +13,8 @@
         android:layout_marginBottom="5dp"
         tools:targetApi="lollipop"
         tools:ignore="PrivateResource"
-        android:layout_margin="18dp">
+        android:layout_margin="18dp"
+        android:onClick="abrirEsporte">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -131,7 +132,8 @@
         tools:ignore="PrivateResource"
         android:layout_marginLeft="18dp"
         android:layout_marginRight="18dp"
-        android:layout_marginBottom="18dp">
+        android:layout_marginBottom="18dp"
+        android:onClick="abrirEsporte">
 
         <LinearLayout
             android:layout_width="match_parent"
