@@ -13,8 +13,7 @@
         android:layout_marginBottom="5dp"
         tools:targetApi="lollipop"
         tools:ignore="PrivateResource"
-        android:layout_margin="18dp"
-        android:onClick="abrirEsporte">
+        android:layout_margin="18dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,6 +45,7 @@
                 android:text="@string/tv_futebol"
                 android:textColor="@color/colorTextDark"
                 android:textSize="24sp"
+                android:onClick="abrirListadeesportes"
                 tools:targetApi="jelly_bean" />
 
             <android.support.v7.widget.AppCompatTextView
@@ -105,6 +105,7 @@
                 android:text="@string/tv_basquete"
                 android:textColor="@color/colorTextDark"
                 android:textSize="24sp"
+                android:onClick="abrirListadeesportes"
                 tools:targetApi="jelly_bean" />
 
             <android.support.v7.widget.AppCompatTextView
@@ -132,8 +133,7 @@
         tools:ignore="PrivateResource"
         android:layout_marginLeft="18dp"
         android:layout_marginRight="18dp"
-        android:layout_marginBottom="18dp"
-        android:onClick="abrirEsporte">
+        android:layout_marginBottom="18dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -163,6 +163,7 @@
                 android:layout_marginRight="18dp"
                 android:fontFamily="@font/helvetica_neue_bold"
                 android:text="@string/tv_tenis_de_mesa"
+                android:onClick="abrirListadeesportes"
                 android:textColor="@color/colorTextDark"
                 android:textSize="24sp"
                 tools:targetApi="jelly_bean" />
@@ -224,6 +225,7 @@
                 android:text="@string/tv_tenis"
                 android:textColor="@color/colorTextDark"
                 android:textSize="24sp"
+                android:onClick="abrirListadeesportes"
                 tools:targetApi="jelly_bean" />
 
             <android.support.v7.widget.AppCompatTextView
@@ -283,6 +285,7 @@
                 android:text="@string/tv_rugby"
                 android:textColor="@color/colorTextDark"
                 android:textSize="24sp"
+                android:onClick="abrirListadeesportes"
                 tools:targetApi="jelly_bean" />
 
             <android.support.v7.widget.AppCompatTextView
@@ -342,6 +345,7 @@
                 android:text="@string/tv_volei"
                 android:textColor="@color/colorTextDark"
                 android:textSize="24sp"
+                android:onClick="abrirListadeesportes"
                 tools:targetApi="jelly_bean" />
 
             <android.support.v7.widget.AppCompatTextView
@@ -401,6 +405,7 @@
                 android:text="@string/tv_surf"
                 android:textColor="@color/colorTextDark"
                 android:textSize="24sp"
+                android:onClick="abrirListadeesportes"
                 tools:targetApi="jelly_bean" />
 
             <android.support.v7.widget.AppCompatTextView
@@ -460,6 +465,7 @@
                 android:text="@string/tv_skate"
                 android:textColor="@color/colorTextDark"
                 android:textSize="24sp"
+                android:onClick="abrirListadeesportes"
                 tools:targetApi="jelly_bean" />
 
             <android.support.v7.widget.AppCompatTextView
@@ -519,6 +525,7 @@
                 android:text="@string/tv_corrida"
                 android:textColor="@color/colorTextDark"
                 android:textSize="24sp"
+                android:onClick="abrirListadeesportes"
                 tools:targetApi="jelly_bean" />
 
             <android.support.v7.widget.AppCompatTextView

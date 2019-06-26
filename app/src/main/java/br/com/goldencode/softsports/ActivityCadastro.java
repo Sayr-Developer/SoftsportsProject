@@ -56,7 +56,8 @@ public class ActivityCadastro extends AppCompatActivity{
     public String sobrenome;
     public String email;
     public String senha;
-
+    public String esporte;
+    public RadioButton selected;
     //Firebase
     private static final int PICK_IMAGE_REQUEST = 1;
     FirebaseStorage storage;
@@ -188,30 +189,48 @@ public class ActivityCadastro extends AppCompatActivity{
         {
             case R.id.radioFutebol:
                 cod_esporte = 1;
+                selected = (RadioButton) findViewById(R.id.radioFutebol);
+                esporte = selected.getText().toString();
                 break;
             case R.id.radioBasquete:
                 cod_esporte = 2;
+                selected = (RadioButton) findViewById(R.id.radioBasquete);
+                esporte = selected.getText().toString();
                 break;
             case R.id.radioTenis:
                 cod_esporte = 3;
+                selected = (RadioButton) findViewById(R.id.radioTenis);
+                esporte = selected.getText().toString();
                 break;
             case R.id.radioTenisDeMesa:
                 cod_esporte = 4;
+                selected = (RadioButton) findViewById(R.id.radioTenisDeMesa);
+                esporte = selected.getText().toString();
                 break;
             case R.id.radioRugby:
                 cod_esporte = 5;
+                selected = (RadioButton) findViewById(R.id.radioRugby);
+                esporte = selected.getText().toString();
                 break;
             case R.id.radioVolei:
                 cod_esporte = 6;
+                selected = (RadioButton) findViewById(R.id.radioVolei);
+                esporte = selected.getText().toString();
                 break;
             case R.id.radioSurf:
                 cod_esporte = 7;
+                selected = (RadioButton) findViewById(R.id.radioSurf);
+                esporte = selected.getText().toString();
                 break;
             case R.id.radioSkate:
                 cod_esporte = 8;
+                selected = (RadioButton) findViewById(R.id.radioSkate);
+                esporte = selected.getText().toString();
                 break;
             case R.id.radioCorrida:
                 cod_esporte = 9;
+                selected = (RadioButton) findViewById(R.id.radioCorrida);
+                esporte = selected.getText().toString();
                 break;
 
         }
@@ -248,7 +267,15 @@ public class ActivityCadastro extends AppCompatActivity{
             //parar função
             return;
         }
-
+        if(cod_esporte == 0 )
+        {
+            Toast.makeText(this, "Selecione seu esporte preferido", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(esporte == null)
+        {
+            return;
+        }
         //se as validações estiverem ok
 
         //será mostrado o progressdialog
@@ -273,7 +300,9 @@ public class ActivityCadastro extends AppCompatActivity{
             public void onCancel(DialogInterface dialog) {
                 progressDialog.dismiss();
                 boolean verificacao = db.verificaemail(email);
-                if (verificacao == true) {
+                boolean lista = db.inserirLista(nome,sobrenome,email,esporte,cod_esporte);
+
+                if (verificacao == true && lista == true) {
                     boolean insert = db.cadastrarSoftplayer(new Usuario(nome, sobrenome, email, senha, cod_esporte));
 
                     if (insert) {

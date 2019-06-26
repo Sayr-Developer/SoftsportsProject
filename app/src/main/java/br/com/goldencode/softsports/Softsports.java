@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.strictmode.SqliteObjectLeakedViolation;
+
+import br.com.goldencode.softsports.ListaEsporteContract.*;
 
 public class Softsports extends SQLiteOpenHelper {
 
@@ -56,6 +59,7 @@ public class Softsports extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+
         //FOREIGN KEY(NOME_QUE_EU_QUERO_DAR_PRA_FK) REFERENCES nome_da_tabela(nome_da_pk)
 
         //Query esporte
@@ -63,6 +67,17 @@ public class Softsports extends SQLiteOpenHelper {
                 + COD_ESPORTE + " INTEGER PRIMARY KEY, " + NOME_ESPORTE + " TEXT)";
 
         db.execSQL(QUERY_TABELA_ESPORTE);
+
+        //QUERY TABELA LISTA ESPORTES VINCULANDO USUÁRIOS
+
+        String QUERY_TABLE_LISTA_ESPORTES = "CREATE TABLE " + ListaEsportesEntry.TABLE_NAME + " (" +
+                ListaEsportesEntry.COLUMN_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                ListaEsportesEntry.COLUMN_2 + " TEXT NOT NULL, " +
+                ListaEsportesEntry.COLUMN_3 + " TEXT NOT NULL, " +
+                ListaEsportesEntry.COLUMN_4 + " TEXT NOT NULL, " +
+                ListaEsportesEntry.COLUMN_5 + " INTEGER, " +  " FOREIGN KEY (" + ListaEsportesEntry.COLUMN_5 + " ) " + " REFERENCES " + TABELA_ESPORTE + " (" + COD_ESPORTE + "))";
+
+        db.execSQL(QUERY_TABLE_LISTA_ESPORTES);
 
         //Query softplayer
         String QUERY_TABELA_SOFTPLAYER = "CREATE TABLE " + TABELA_SOFTPLAYER + "("
@@ -87,6 +102,8 @@ public class Softsports extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    db.execSQL("DROP TABLE IF EXISTS " + ListaEsportesEntry.TABLE_NAME);
+    onCreate(db);
 
     }
 
@@ -153,6 +170,24 @@ public class Softsports extends SQLiteOpenHelper {
             return false;
 
 
+    }
+    boolean inserirLista(String nome, String sobrenome, String email,String esporte,int codigoesporte)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues lista = new ContentValues();
+        lista.put(ListaEsportesEntry.COLUMN_5, codigoesporte);
+        lista.put(ListaEsportesEntry.COLUMN_2, nome+" "+sobrenome);
+        lista.put(ListaEsportesEntry.COLUMN_3, email);
+        lista.put(ListaEsportesEntry.COLUMN_4, esporte);
+        db.insert(ListaEsportesEntry.TABLE_NAME, null, lista);
+
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM esporteslista", null);
+        if(cursor.getCount() > 0)
+        {
+            db.close(); return true;
+        }
+        else return false;
     }
 
     boolean login (String email, String senha)

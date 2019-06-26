@@ -178,6 +178,10 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
         startActivity(intent);
 
     }
+    public void abrirListadeesportes(View view){
+        Intent intent = new Intent(getApplicationContext(), ListaMain.class);
+        startActivity(intent);
+    }
 
     public void fecharDrawerLayout(View view){
 
