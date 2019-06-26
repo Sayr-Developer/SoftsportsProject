@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class ProfileActivity extends AppCompatActivity {
 
     Toolbar toolbar;
@@ -21,7 +23,11 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        TextView nomeusuario = (TextView) findViewById(R.id.tvNomeCompleto);
+        TextView email = findViewById(R.id.tvEmail);
 
+        nomeusuario.setText(SingletonUsuario.getInstance().getUsuario().getNome());
+        email.setText(SingletonUsuario.getInstance().getUsuario().getEmail());
         toolbarTextView = findViewById(R.id.toolbarText);
 
         toolbar = findViewById(R.id.toolBar);

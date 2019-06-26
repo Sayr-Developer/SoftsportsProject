@@ -34,6 +34,7 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
     CircleImageView circleImageView;
     TextView toolbarTextView;
     private LinearLayout linearLayout;
+    public Usuario u;
 
     Softsports db = new Softsports(this);
 
@@ -57,9 +58,13 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
 
         circleImageView = findViewById(R.id.fotoPerfil);
-
         navigationView = findViewById(R.id.navView);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.tvNomeCompleto);
+        navUsername.setText(SingletonUsuario.getInstance().getUsuario().getNome());
+        TextView navEmail = (TextView) headerView.findViewById(R.id.tvEmail);
+        navEmail.setText(SingletonUsuario.getInstance().getUsuario().getEmail());
 
         bottomNavigationView = findViewById(R.id.bottomNav);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);

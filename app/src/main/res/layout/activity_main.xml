@@ -36,7 +36,7 @@
             android:textColor="#5e5e5e"
             app:fontFamily="@font/helvetica_neue_light"/>
 
-        <android.support.v7.widget.AppCompatEditText
+        <com.santalu.maskedittext.MaskEditText
             android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="55dp"
@@ -49,6 +49,7 @@
             app:fontFamily="@font/helvetica_neue_light"
             android:background="@drawable/custom_edit_text"
             android:inputType="textEmailAddress"
+            app:met_mask="####@#####.###"
             android:drawableRight="@drawable/ic_mail"
             android:drawableEnd="@drawable/ic_mail"
             />

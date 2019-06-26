@@ -20,15 +20,14 @@ public class Usuario {
         this.codEsporte = codEsporte;
     }
 
-    public Usuario(int codUsuario, String nome, String sobrenome, String email, String senha, byte[] foto, int codEsporte) {
-        this.codUsuario = codUsuario;
+
+    public Usuario(String nome, String email){
         this.nome = nome;
-        this.sobrenome = sobrenome;
         this.email = email;
-        this.senha = senha;
-        this.foto = foto;
-        this.codEsporte = codEsporte;
+
     }
+
+
 
     public int getCodEsporte() {
         return codEsporte;

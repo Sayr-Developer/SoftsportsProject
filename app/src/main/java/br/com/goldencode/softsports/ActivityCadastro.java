@@ -301,7 +301,6 @@ public class ActivityCadastro extends AppCompatActivity{
                 progressDialog.dismiss();
                 boolean verificacao = db.verificaemail(email);
                 boolean lista = db.inserirLista(nome,sobrenome,email,esporte,cod_esporte);
-
                 if (verificacao == true && lista == true) {
                     boolean insert = db.cadastrarSoftplayer(new Usuario(nome, sobrenome, email, senha, cod_esporte));
 
@@ -309,6 +308,11 @@ public class ActivityCadastro extends AppCompatActivity{
                         progressDialog.dismiss();
                         finish();
                         toastSuccess("Usuário cadastrado com sucesso!");
+                        Usuario u = new Usuario(nome+" "+sobrenome,email);
+                        u.setNome(nome+" "+sobrenome);
+                        u.setEmail(email);
+                        SingletonUsuario.getInstance().setUsuario(u);
+
                     } else {
                         toastError("O usuário não pode ser cadastrado, tente novamente.");
                         progressDialog.dismiss();

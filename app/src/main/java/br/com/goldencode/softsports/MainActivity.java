@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 if(verificacao == false){
                     boolean c = db.login(e,s);
                     if(c == true){
+
                         Intent intent = new Intent(MainActivity.this, TelaInicialActivity.class);
                         startActivity(intent);
                     }

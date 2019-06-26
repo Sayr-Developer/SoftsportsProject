@@ -35,6 +35,7 @@ public class ListaMain extends AppCompatActivity {
         madapter.swapCursor(pegarallItens());
 
     }
+
     private Cursor pegarallItens(){
         return mDatabase.query(
                 ListaEsporteContract.ListaEsportesEntry.TABLE_NAME,
